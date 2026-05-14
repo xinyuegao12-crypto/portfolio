@@ -119,17 +119,16 @@ body::before {
   line-height:0.8; user-select:none;
   transition:all 0.3s;
 }
-.l-P{ font-size:clamp(4rem,10vw,8rem); top:6%; left:8%; }
-.l-O{ font-size:clamp(3.5rem,9vw,7rem); top:3%; left:22%; }
-.l-R{ font-size:clamp(3.8rem,9.5vw,7.5rem); top:1%; right:18%; color:var(--accent); }
-.l-T{ font-size:clamp(4.2rem,10vw,8rem); top:5%; right:5%; }
-.l-F{ font-size:clamp(3.2rem,8vw,6.5rem); bottom:12%; left:6%; }
-.l-O2{ font-size:clamp(3.6rem,9vw,7rem); bottom:8%; left:20%; color:var(--accent); }
-.l-L{ font-size:clamp(4rem,10vw,8rem); bottom:5%; right:12%; }
-.l-I{ font-size:clamp(3.4rem,8.5vw,7rem); bottom:15%; right:3%; color:var(--accent); }
-.l-O3{ font-size:clamp(3.8rem,9vw,7.5rem); top:35%; left:2%; }
-.l-26{ font-size:clamp(2rem,5vw,4rem); top:25%; right:8%; color:var(--accent); }
-.l-io{ font-size:clamp(2.2rem,5.5vw,4.5rem); top:30%; right:14%; color:var(--accent); }
+.l-P{ font-size:clamp(2.5rem,7vw,5.5rem); top:8%; left:10%; }
+.l-O{ font-size:clamp(2.2rem,6.5vw,5rem); top:5%; left:28%; }
+.l-R{ font-size:clamp(2.4rem,7vw,5.5rem); top:4%; right:20%; color:var(--accent); }
+.l-T{ font-size:clamp(2.6rem,7vw,5.5rem); top:9%; right:6%; }
+.l-F{ font-size:clamp(2rem,5.5vw,4.5rem); bottom:14%; left:12%; }
+.l-O2{ font-size:clamp(2.3rem,6.5vw,5rem); bottom:10%; left:26%; color:var(--accent); }
+.l-L{ font-size:clamp(2.5rem,7vw,5.5rem); bottom:8%; right:14%; }
+.l-I{ font-size:clamp(2.1rem,6vw,4.8rem); bottom:16%; right:5%; color:var(--accent); }
+.l-O3{ font-size:clamp(2.3rem,6.5vw,5rem); top:38%; left:4%; }
+.l-26{ font-size:clamp(1.5rem,3.5vw,3rem); top:28%; right:10%; color:var(--accent); }
 
 /* Center sketch portrait */
 .hero-portrait-wrap {
@@ -144,15 +143,12 @@ body::before {
 }
 .hero-portrait-img {
   width: clamp(160px, 28vw, 260px);
-  height: clamp(220px, 38vw, 340px);
-  object-fit: cover;
-  border-radius: 50% / 40%;
+  height: auto;
+  max-height: clamp(300px, 45vw, 420px);
+  object-fit: contain;
   animation: gentleFloat 4s ease-in-out infinite;
-  filter: grayscale(0.85) contrast(1.1) brightness(0.95);
-  mix-blend-mode: multiply;
   opacity: 0.85;
-  mask-image: radial-gradient(ellipse 40% 42% at 50% 42%, black 60%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse 40% 42% at 50% 42%, black 60%, transparent 85%);
+  filter: contrast(1.3);
 }
 @keyframes gentleFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
@@ -265,7 +261,7 @@ body::before {
 .marquee-icon { font-size:1.1rem; }
 
 /* ===== CERTS ===== */
-.certs-section { margin-top:64px; }
+.certs-section { margin-top:20px; }
 .certs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px; }
 .cert-card { perspective:600px; height:120px; }
 .cert-inner { width:100%;height:100%; position:relative; transition:transform 0.7s; transform-style:preserve-3d; cursor:pointer; }
@@ -289,46 +285,24 @@ body::before {
 .photo-placeholder { width:100%;height:100%; display:flex; align-items:center; justify-content:center; font-size:2.2rem; color:rgba(255,255,255,0.45); transition:transform 0.4s; }
 .photo-item:hover .photo-placeholder { transform:scale(1.2); }
 
-/* Gallery overlay */
-.gallery-overlay { display:none; position:fixed; top:0;left:0;width:100%;height:100%; background:rgba(0,0,0,0.92); z-index:9999; flex-direction:column; align-items:center; justify-content:center; }
-.gallery-overlay.open { display:flex; }
-.gallery-close { position:absolute; top:20px;right:28px; font-size:2rem; color:#fff; cursor:pointer; z-index:10; width:44px;height:44px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:background 0.3s; }
-.gallery-close:hover { background:rgba(255,255,255,0.1); }
-.gallery-main { display:flex; align-items:center; gap:20px; max-width:90vw; max-height:80vh; }
-.gallery-nav { width:50px;height:50px; border-radius:50%; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.08); color:#fff; font-size:1.5rem; cursor:pointer; transition:all 0.3s; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-.gallery-nav:hover { background:rgba(255,255,255,0.2); }
-.gallery-nav:active { transform:scale(0.95); }
-.gallery-image-wrap { max-width:70vw; max-height:70vh; display:flex; align-items:center; justify-content:center; border-radius:12px; overflow:hidden; }
-.gallery-image-wrap .gallery-img { max-width:100%; max-height:100%; object-fit:contain; border-radius:12px; }
-.gallery-image-wrap .gallery-placeholder { width:400px; height:400px; display:flex; align-items:center; justify-content:center; font-size:8rem; color:rgba(255,255,255,0.4); border-radius:12px; }
-.gallery-counter { color:rgba(255,255,255,0.5); font-family:'JetBrains Mono',monospace; font-size:0.8rem; margin-top:16px; }
-.gallery-thumbs { display:flex; gap:8px; margin-top:16px; }
-.gallery-thumb { width:48px;height:48px; border-radius:8px; cursor:pointer; opacity:0.4; transition:all 0.3s; border:2px solid transparent; }
-.gallery-thumb.active { opacity:1; border-color:#fff; }
-.gallery-thumb:hover { opacity:0.8; }
-
 .social-playlist-row { display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:44px; }
 .social-links h3,.playlist-box h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:18px; }
 .social-link { display:flex; align-items:center; gap:10px; padding:12px 18px; background:var(--bg-card); border-radius:12px; margin-bottom:8px; text-decoration:none; color:var(--text); border:1px solid var(--card-border); transition:all 0.3s; }
 .social-link:hover { transform:translateX(6px); border-color:var(--accent); }
 .soc-icon { font-size:1.3rem; }
 
-/* Playlist */
-.playlist-box { background:var(--bg-card); border-radius:14px; padding:20px; border:1px solid var(--card-border); }
-.playlist-item { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; cursor:pointer; transition:all 0.3s; margin-bottom:2px; }
-.playlist-item:hover { background:rgba(128,128,128,0.05); }
-.playlist-item.playing { background:var(--skill-bg); }
-.playlist-num { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--text-light); width:20px; }
-.playlist-play-btn { width:28px;height:28px; border-radius:50%; border:2px solid var(--accent); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; flex-shrink:0; }
-.playlist-play-btn:hover { background:var(--accent); }
-.playlist-play-btn::after { content:''; display:block; width:0;height:0; border-left:7px solid var(--accent); border-top:4.5px solid transparent; border-bottom:4.5px solid transparent; margin-left:1px; }
-.playlist-play-btn:hover::after { border-left-color:#fff; }
-.playlist-item.playing .playlist-play-btn { background:var(--accent); }
-.playlist-item.playing .playlist-play-btn::after { border-left:none; width:2px;height:9px; border-left:2.5px solid #fff; border-right:2.5px solid #fff; margin-left:0; border-top:none;border-bottom:none; }
-.playlist-info { flex:1;min-width:0; }
-.playlist-song { font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.playlist-artist { font-size:0.7rem; color:var(--text-muted); }
-.playlist-duration { font-size:0.68rem; color:var(--text-light); font-family:'JetBrains Mono',monospace; }
+/* Recently blocks */
+.recently-box { background:var(--bg-card); border-radius:14px; padding:20px; border:1px solid var(--card-border); }
+.recently-item { display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--divider); align-items:center; }
+.recently-item:last-child { border-bottom:none; }
+.recently-poster { width:56px;height:80px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:2rem; }
+.rp-movie { background:linear-gradient(135deg,#f39c12,#e74c3c); }
+.rp-song { background:linear-gradient(135deg,#3498db,#2ecc71); }
+.rp-book { background:linear-gradient(135deg,#9b59b6,#3498db); }
+.recently-info { flex:1; min-width:0; }
+.recently-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); }
+.recently-title { font-size:0.95rem; font-weight:600; margin:2px 0; }
+.recently-sub { font-size:0.75rem; color:var(--text-muted); }
 
 /* ===== CONTACT ===== */
 .contact-section { min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--hero-bg); transition:background var(--t); padding:40px; }
@@ -436,7 +410,7 @@ body::before {
 
   <!-- Center portrait — photo with sketch filter -->
   <div class="hero-portrait-wrap">
-    <img src="portrait.jpg" alt="Xinyue Gao" class="hero-portrait-img">
+    <img src="portrait-sketch.png" alt="Xinyue Gao" class="hero-portrait-img">
   </div>
 
   <!-- Bottom action buttons -->
@@ -577,6 +551,9 @@ body::before {
   </div>
 
   <div class="skills-marquee-wrap reveal">
+    <div class="section-header" style="margin-bottom:24px;">
+      <div class="section-num" data-zh="证书 & 技能" data-en="Certificates & Skills">证书 & 技能</div>
+    </div>
     <div class="skills-marquee">
       <span class="marquee-item"><span class="marquee-icon">🐍</span> Python</span><span class="marquee-item"><span class="marquee-icon">🗄️</span> SQL</span><span class="marquee-item"><span class="marquee-icon">📊</span> Data Analysis</span><span class="marquee-item"><span class="marquee-icon">🤖</span> AI/ML</span><span class="marquee-item"><span class="marquee-icon">📈</span> Statistics</span><span class="marquee-item"><span class="marquee-icon">🔗</span> ETL</span><span class="marquee-item"><span class="marquee-icon">📋</span> Project Mgmt</span><span class="marquee-item"><span class="marquee-icon">🌐</span> Cross-Cultural</span><span class="marquee-item"><span class="marquee-icon">💬</span> Mandarin</span><span class="marquee-item"><span class="marquee-icon">🇬🇧</span> English</span>
       <span class="marquee-item"><span class="marquee-icon">🐍</span> Python</span><span class="marquee-item"><span class="marquee-icon">🗄️</span> SQL</span><span class="marquee-item"><span class="marquee-icon">📊</span> Data Analysis</span><span class="marquee-item"><span class="marquee-icon">🤖</span> AI/ML</span><span class="marquee-item"><span class="marquee-icon">📈</span> Statistics</span>
@@ -584,7 +561,6 @@ body::before {
   </div>
 
   <div class="certs-section reveal">
-    <h3 class="timeline-title" data-zh="证书 & 技能" data-en="Certificates & Skills">证书 & 技能</h3>
     <div class="certs-grid">
       <div class="cert-card"><div class="cert-inner"><div class="cert-front"><div class="cert-icon">📜</div><div class="cert-name">Master of Applied Statistics</div><div class="cert-issuer">Minzu University of China</div></div><div class="cert-back"><div class="cert-date">2024-2026</div><div class="cert-detail">中央民族大学应用统计硕士在读</div></div></div></div>
       <div class="cert-card"><div class="cert-inner"><div class="cert-front"><div class="cert-icon">🎓</div><div class="cert-name">BS Statistics (GPA 4.1)</div><div class="cert-issuer">Anhui Normal University</div></div><div class="cert-back"><div class="cert-date">2020-2024</div><div class="cert-detail">安徽师范大学 专业排名前5%</div></div></div></div>
@@ -600,24 +576,43 @@ body::before {
     <h2 class="section-title" data-zh="兴趣 & 生活" data-en="Interests & Life">兴趣 & 生活</h2>
     <div class="section-line"></div>
   </div>
-  <div class="photo-grid reveal" id="photoGrid">
-    <div class="photo-item" onclick="openGallery(0)"><div class="photo-placeholder">🏔️</div></div><div class="photo-item" onclick="openGallery(1)"><div class="photo-placeholder">🌊</div></div><div class="photo-item" onclick="openGallery(2)"><div class="photo-placeholder">🏙️</div></div><div class="photo-item" onclick="openGallery(3)"><div class="photo-placeholder">🌸</div></div><div class="photo-item" onclick="openGallery(4)"><div class="photo-placeholder">☕</div></div><div class="photo-item" onclick="openGallery(5)"><div class="photo-placeholder">📸</div></div>
+  <div class="photo-grid reveal">
+    <div class="photo-item"><div class="photo-placeholder">🏔️</div></div><div class="photo-item"><div class="photo-placeholder">🌊</div></div><div class="photo-item"><div class="photo-placeholder">🏙️</div></div><div class="photo-item"><div class="photo-placeholder">🌸</div></div><div class="photo-item"><div class="photo-placeholder">☕</div></div><div class="photo-item"><div class="photo-placeholder">📸</div></div>
   </div>
   <div class="social-playlist-row">
     <div class="social-links reveal">
       <h3 data-zh="找到我" data-en="Find Me">找到我</h3>
       <a href="https://www.youtube.com/@GaoXinyue-y8z" target="_blank" class="social-link"><span class="soc-icon">📺</span> YouTube <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@GaoXinyue-y8z</span></a>
-      <a href="https://www.xiaohongshu.com/user/profile/你的ID" target="_blank" class="social-link"><span class="soc-icon">📕</span> 小红书 <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@kaka秋</span></a>
+      <a href="https://www.xiaohongshu.com/user/profile/kaka秋" target="_blank" class="social-link"><span class="soc-icon">📕</span> 小红书 <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@kaka秋</span></a>
       <a href="https://www.instagram.com/bili_cecilia" target="_blank" class="social-link"><span class="soc-icon">📷</span> Instagram <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@bili_cecilia</span></a>
-      <a href="https://www.linkedin.com/in/高新月" target="_blank" class="social-link"><span class="soc-icon">💼</span> LinkedIn <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">高新月</span></a>
+      <a href="https://www.linkedin.com/search/results/people/?keywords=高新月" target="_blank" class="social-link"><span class="soc-icon">💼</span> LinkedIn <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">高新月</span></a>
     </div>
-    <div class="playlist-box reveal">
-      <h3 data-zh="🎵 正在听" data-en="🎵 Now Playing">🎵 正在听</h3>
-      <div class="playlist-item" onclick="togglePlay(this)"><span class="playlist-num">01</span><button class="playlist-play-btn"></button><div class="playlist-info"><div class="playlist-song">Stay With Me</div><div class="playlist-artist">CHROMANCE</div></div><span class="playlist-duration">3:12</span></div>
-      <div class="playlist-item" onclick="togglePlay(this)"><span class="playlist-num">02</span><button class="playlist-play-btn"></button><div class="playlist-info"><div class="playlist-song">起风了</div><div class="playlist-artist">买辣椒也用券</div></div><span class="playlist-duration">5:25</span></div>
-      <div class="playlist-item" onclick="togglePlay(this)"><span class="playlist-num">03</span><button class="playlist-play-btn"></button><div class="playlist-info"><div class="playlist-song">Viva La Vida</div><div class="playlist-artist">Coldplay</div></div><span class="playlist-duration">4:04</span></div>
-      <div class="playlist-item" onclick="togglePlay(this)"><span class="playlist-num">04</span><button class="playlist-play-btn"></button><div class="playlist-info"><div class="playlist-song">晴天</div><div class="playlist-artist">周杰伦</div></div><span class="playlist-duration">4:30</span></div>
-      <div class="playlist-item" onclick="togglePlay(this)"><span class="playlist-num">05</span><button class="playlist-play-btn"></button><div class="playlist-info"><div class="playlist-song">Clair de Lune</div><div class="playlist-artist">Debussy</div></div><span class="playlist-duration">5:14</span></div>
+    <div class="recently-box reveal">
+      <h3 data-zh="📋 最近在..." data-en="📋 Recently...">📋 最近在...</h3>
+      <div class="recently-item">
+        <div class="recently-poster rp-movie">🎬</div>
+        <div class="recently-info">
+          <div class="recently-label" data-zh="最近在看" data-en="Watching">最近在看</div>
+          <div class="recently-title" data-zh="《三傻大闹宝莱坞》" data-en="3 Idiots">《三傻大闹宝莱坞》</div>
+          <div class="recently-sub" data-zh="一部关于教育、梦想与友谊的印度电影" data-en="A film about education, dreams & friendship">一部关于教育、梦想与友谊的印度电影</div>
+        </div>
+      </div>
+      <div class="recently-item">
+        <div class="recently-poster rp-song">🎵</div>
+        <div class="recently-info">
+          <div class="recently-label" data-zh="最近在听" data-en="Listening">最近在听</div>
+          <div class="recently-title">Perfect</div>
+          <div class="recently-sub">Ed Sheeran</div>
+        </div>
+      </div>
+      <div class="recently-item">
+        <div class="recently-poster rp-book">📖</div>
+        <div class="recently-info">
+          <div class="recently-label" data-zh="最近在读" data-en="Reading">最近在读</div>
+          <div class="recently-title" data-zh="《非暴力沟通》" data-en="Nonviolent Communication">《非暴力沟通》</div>
+          <div class="recently-sub" data-zh="Marshall B. Rosenberg · 学会用爱与理解沟通" data-en="Marshall B. Rosenberg · Learning to communicate with love">Marshall B. Rosenberg · 学会用爱与理解沟通</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -655,58 +650,8 @@ body::before {
   </div>
 </section>
 
-<!-- Gallery overlay -->
-<div class="gallery-overlay" id="galleryOverlay">
-  <div class="gallery-close" onclick="closeGallery()">✕</div>
-  <div class="gallery-main">
-    <button class="gallery-nav" onclick="galleryPrev()">◂</button>
-    <div class="gallery-image-wrap" id="galleryImageWrap"></div>
-    <button class="gallery-nav" onclick="galleryNext()">▸</button>
-  </div>
-  <div class="gallery-counter" id="galleryCounter"></div>
-  <div class="gallery-thumbs" id="galleryThumbs"></div>
-</div>
-
 <script>
 let currentLang='zh',currentTheme='casual';
-
-// ===== GALLERY =====
-const galleryIcons = ['🏔️','🌊','🏙️','🌸','☕','📸'];
-const galleryLabels = {zh:['山间','海边','城市','花开','咖啡','摄影'],en:['Mountain','Ocean','City','Blossom','Coffee','Photo']};
-let galleryIdx = 0;
-
-function openGallery(idx) {
-  galleryIdx = idx;
-  const overlay = document.getElementById('galleryOverlay');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  renderGallery();
-}
-function closeGallery() {
-  document.getElementById('galleryOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function galleryPrev() { galleryIdx = (galleryIdx - 1 + galleryIcons.length) % galleryIcons.length; renderGallery(); }
-function galleryNext() { galleryIdx = (galleryIdx + 1) % galleryIcons.length; renderGallery(); }
-function renderGallery() {
-  const icon = galleryIcons[galleryIdx];
-  const label = galleryLabels[currentLang][galleryIdx];
-  document.getElementById('galleryImageWrap').innerHTML = '<div class="gallery-placeholder" style="background:linear-gradient(135deg,#c5d8c3,#8faf8d)">'+icon+'</div>';
-  document.getElementById('galleryCounter').textContent = (galleryIdx+1)+' / '+galleryIcons.length+' · '+label;
-  // Render thumbnails
-  let thumbsHtml = '';
-  galleryIcons.forEach((ic,i) => {
-    thumbsHtml += '<div class="gallery-thumb'+(i===galleryIdx?' active':'')+'" onclick="galleryIdx='+i+';renderGallery()" style="background:linear-gradient(135deg,#c5d8c3,#8faf8d);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">'+ic+'</div>';
-  });
-  document.getElementById('galleryThumbs').innerHTML = thumbsHtml;
-}
-// Keyboard nav
-document.addEventListener('keydown',e => {
-  if(!document.getElementById('galleryOverlay').classList.contains('open')) return;
-  if(e.key === 'Escape') closeGallery();
-  if(e.key === 'ArrowLeft') galleryPrev();
-  if(e.key === 'ArrowRight') galleryNext();
-});
 const typewriterContent={zh:`写给下一个访客，
 
 你好呀，很高兴你来到这里。
@@ -734,8 +679,6 @@ function restartTypewriter(){typeWriter(typewriterContent[currentLang],document.
 
 function sendNote(){const inp=document.getElementById('visitorInput');const tx=inp.value.trim();if(!tx)return;const now=new Date();const time=now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});const date=now.toLocaleDateString(currentLang==='zh'?'zh-CN':'en-US',{month:'short',day:'numeric'});const notes=document.getElementById('visitorNotes');const n=document.createElement('div');n.className='visitor-note';n.innerHTML=tx.replace(/\n/g,'<br>')+'<div class="note-time">'+date+' '+time+' · '+(currentLang==='zh'?'访客':'Visitor')+' #'+(notes.children.length+1)+'</div>';notes.prepend(n);inp.value='';document.getElementById('charCount').textContent='0/300';n.scrollIntoView({behavior:'smooth'})}
 document.addEventListener('DOMContentLoaded',()=>{const inp=document.getElementById('visitorInput');if(inp)inp.addEventListener('input',()=>{document.getElementById('charCount').textContent=inp.value.length+'/300'})})
-
-function togglePlay(el){const was=el.classList.contains('playing');document.querySelectorAll('.playlist-item').forEach(i=>i.classList.remove('playing'));if(!was)el.classList.add('playing')}
 
 function switchLang(lang){currentLang=lang;document.getElementById('langZh').classList.toggle('active',lang==='zh');document.getElementById('langEn').classList.toggle('active',lang==='en');const heroName=document.querySelector('.hero-info-br .name');if(heroName)heroName.textContent='Xinyue Gao';document.querySelectorAll('[data-zh]').forEach(el=>{if(el.classList.contains('hero-info-br'))return;const text=lang==='zh'?el.getAttribute('data-zh'):el.getAttribute('data-en');if(!text)return;if(el.children.length===1&&el.children[0].tagName==='SPAN'&&el.querySelector('span.highlight')){el.innerHTML=text}else if(el.children.length===0){el.textContent=text}});const ta=document.getElementById('visitorInput');if(ta)ta.placeholder=lang==='zh'?ta.getAttribute('data-zh-placeholder'):ta.getAttribute('data-en-placeholder');restartTypewriter()}
 
