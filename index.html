@@ -9,27 +9,27 @@
 /* ===== MORANDI VARIABLES ===== */
 :root { --t: 0.5s; }
 body.theme-casual {
-  --bg: #eef1f7;
+  --bg: #eef2ed;
   --bg-card: rgba(255,255,255,0.7);
-  --text: #0a0a0c;
-  --text-muted: #71757d;
-  --text-light: #9a9ea5;
-  --accent: #3d5068;
-  --accent2: #5c7088;
-  --accent3: #b0b8c4;
+  --text: #2d332c;
+  --text-muted: #7d857b;
+  --text-light: #a0a89e;
+  --accent: #7d9a7b;
+  --accent2: #A3C0A1;
+  --accent3: #c5d8c3;
   --border: rgba(0,0,0,0.05);
   --shadow: 0 4px 24px rgba(0,0,0,0.04);
-  --nav-bg: rgba(238,241,247,0.8);
-  --tag-bg: rgba(61,80,104,0.07);
-  --tag-text: #3d5068;
-  --badge-ribbon: #3d5068;
+  --nav-bg: rgba(238,242,237,0.8);
+  --tag-bg: rgba(125,154,123,0.08);
+  --tag-text: #7d9a7b;
+  --badge-ribbon: #7d9a7b;
   --card-border: rgba(0,0,0,0.05);
-  --skill-bg: rgba(61,80,104,0.05);
-  --skill-hover: #3d5068;
-  --envelope-bg: #ecf0f5;
-  --envelope-border: #d0d5de;
+  --skill-bg: rgba(125,154,123,0.06);
+  --skill-hover: #7d9a7b;
+  --envelope-bg: #ecf0ea;
+  --envelope-border: #d0d8ce;
   --divider: rgba(0,0,0,0.07);
-  --hero-bg: #eef1f7;
+  --hero-bg: #eef2ed;
 }
 body.theme-professional {
   --bg: #f8f9fb;
@@ -141,6 +141,18 @@ body::before {
   width: clamp(180px, 30vw, 280px);
   height: clamp(240px, 40vw, 360px);
   animation: gentleFloat 4s ease-in-out infinite;
+}
+.hero-portrait-img {
+  width: clamp(160px, 28vw, 260px);
+  height: clamp(220px, 38vw, 340px);
+  object-fit: cover;
+  border-radius: 50% / 40%;
+  animation: gentleFloat 4s ease-in-out infinite;
+  filter: grayscale(0.85) contrast(1.1) brightness(0.95);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  mask-image: radial-gradient(ellipse 40% 42% at 50% 42%, black 60%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 40% 42% at 50% 42%, black 60%, transparent 85%);
 }
 @keyframes gentleFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
@@ -273,9 +285,27 @@ body::before {
 .photo-item:nth-child(2){animation-delay:0.5s}.photo-item:nth-child(3){animation-delay:1s}.photo-item:nth-child(4){animation-delay:1.5s}.photo-item:nth-child(5){animation-delay:2s}.photo-item:nth-child(6){animation-delay:2.5s}
 .photo-item:hover { transform:scale(1.06) rotate(-1deg); z-index:2; }
 @keyframes photoBob { 0%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} 60%{transform:translateY(3px)} }
-.photo-item:nth-child(1){background:linear-gradient(135deg,#d5dce4,#a0b0c0)}.photo-item:nth-child(2){background:linear-gradient(135deg,#ded5cb,#c4b5a0)}.photo-item:nth-child(3){background:linear-gradient(135deg,#cdd8d2,#a8bfb0)}.photo-item:nth-child(4){background:linear-gradient(135deg,#ddd5e0,#b8a8c4)}.photo-item:nth-child(5){background:linear-gradient(135deg,#d8dfd8,#b0c0b0)}.photo-item:nth-child(6){background:linear-gradient(135deg,#dce0e4,#b0b8c4)}
+.photo-item:nth-child(1){background:linear-gradient(135deg,#c5d8c3,#8faf8d)}.photo-item:nth-child(2){background:linear-gradient(135deg,#c8d6c4,#9bb89a)}.photo-item:nth-child(3){background:linear-gradient(135deg,#d0dcc8,#a8c4a6)}.photo-item:nth-child(4){background:linear-gradient(135deg,#c2d4bf,#8daa8b)}.photo-item:nth-child(5){background:linear-gradient(135deg,#ccd9c6,#a0bca0)}.photo-item:nth-child(6){background:linear-gradient(135deg,#c7d6c2,#95b593)}
 .photo-placeholder { width:100%;height:100%; display:flex; align-items:center; justify-content:center; font-size:2.2rem; color:rgba(255,255,255,0.45); transition:transform 0.4s; }
 .photo-item:hover .photo-placeholder { transform:scale(1.2); }
+
+/* Gallery overlay */
+.gallery-overlay { display:none; position:fixed; top:0;left:0;width:100%;height:100%; background:rgba(0,0,0,0.92); z-index:9999; flex-direction:column; align-items:center; justify-content:center; }
+.gallery-overlay.open { display:flex; }
+.gallery-close { position:absolute; top:20px;right:28px; font-size:2rem; color:#fff; cursor:pointer; z-index:10; width:44px;height:44px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:background 0.3s; }
+.gallery-close:hover { background:rgba(255,255,255,0.1); }
+.gallery-main { display:flex; align-items:center; gap:20px; max-width:90vw; max-height:80vh; }
+.gallery-nav { width:50px;height:50px; border-radius:50%; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.08); color:#fff; font-size:1.5rem; cursor:pointer; transition:all 0.3s; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.gallery-nav:hover { background:rgba(255,255,255,0.2); }
+.gallery-nav:active { transform:scale(0.95); }
+.gallery-image-wrap { max-width:70vw; max-height:70vh; display:flex; align-items:center; justify-content:center; border-radius:12px; overflow:hidden; }
+.gallery-image-wrap .gallery-img { max-width:100%; max-height:100%; object-fit:contain; border-radius:12px; }
+.gallery-image-wrap .gallery-placeholder { width:400px; height:400px; display:flex; align-items:center; justify-content:center; font-size:8rem; color:rgba(255,255,255,0.4); border-radius:12px; }
+.gallery-counter { color:rgba(255,255,255,0.5); font-family:'JetBrains Mono',monospace; font-size:0.8rem; margin-top:16px; }
+.gallery-thumbs { display:flex; gap:8px; margin-top:16px; }
+.gallery-thumb { width:48px;height:48px; border-radius:8px; cursor:pointer; opacity:0.4; transition:all 0.3s; border:2px solid transparent; }
+.gallery-thumb.active { opacity:1; border-color:#fff; }
+.gallery-thumb:hover { opacity:0.8; }
 
 .social-playlist-row { display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:44px; }
 .social-links h3,.playlist-box h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:18px; }
@@ -404,50 +434,9 @@ body::before {
     <div class="sub">Master of Applied Statistics</div>
   </div>
 
-  <!-- Center portrait -->
+  <!-- Center portrait — photo with sketch filter -->
   <div class="hero-portrait-wrap">
-    <svg class="hero-portrait" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <style>.sk{stroke:#2c2c2c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}.skf{fill:#2c2c2c;opacity:.06}</style>
-      <!-- Hair outline -->
-      <path d="M58 48c-2-18 12-32 26-34 10-2 24 0 34 8 12 10 16 24 14 38-2 16-6 34-8 50" class="sk" stroke-width="4" opacity="0.25"/>
-      <path d="M62 46c0-10 8-24 20-28 12-4 22 0 30 8 10 10 12 22 10 34" class="sk"/>
-      <!-- Bangs -->
-      <path d="M64 36c6-6 18-10 26-4 6 4 10 10 12 18" class="sk" stroke-width="1.2"/>
-      <path d="M66 42c4-6 14-10 22-6 6 4 10 10 12 18" class="sk" stroke-width="1"/>
-      <!-- Face -->
-      <ellipse cx="100" cy="58" rx="24" ry="26" class="sk"/>
-      <!-- Eyebrows -->
-      <path d="M84 50c4-2 8-2 10 0" class="sk" stroke-width="1"/>
-      <path d="M106 50c4-2 8-2 10 0" class="sk" stroke-width="1"/>
-      <!-- Eyes -->
-      <ellipse cx="88" cy="56" rx="3" ry="3.5" class="skf" opacity="0.5"/>
-      <ellipse cx="112" cy="56" rx="3" ry="3.5" class="skf" opacity="0.5"/>
-      <!-- Nose -->
-      <path d="M100 58v12c-2 2-4 2-5 0" class="sk" stroke-width="1"/>
-      <!-- Smile -->
-      <path d="M90 72c4 3 16 3 20 0" class="sk" stroke-width="1.3"/>
-      <!-- Neck -->
-      <path d="M92 84v10M108 84v10" class="sk" stroke-width="1.2"/>
-      <!-- Collar / Blazer -->
-      <path d="M82 94l18 14 18-14" class="sk"/>
-      <path d="M78 100c6-4 16-6 22-2l-6 18c-4-4-10-4-14 0l-2-16z" class="sk"/>
-      <path d="M122 100c-6-4-16-6-22-2l6 18c4-4 10-4 14 0l2-16z" class="sk"/>
-      <!-- Blazer body -->
-      <path d="M72 108c8-4 20-6 28-2v40c0 10-4 18-10 22" class="sk"/>
-      <path d="M128 108c-8-4-20-6-28-2v40c0 10 4 18 10 22" class="sk"/>
-      <!-- Button -->
-      <circle cx="100" cy="120" r="2" class="skf" opacity="0.3"/>
-      <!-- Arms -->
-      <path d="M74 110c-14 6-22 18-24 34-2 8 0 16 2 20" class="sk"/>
-      <path d="M126 110c14 6 22 18 24 34 2 8 0 16-2 20" class="sk"/>
-      <!-- Hand on hip (right) -->
-      <path d="M152 144c-4 4-14 8-24 0-4-4-4-10 0-14" class="sk" stroke-width="1.2"/>
-      <!-- Jeans -->
-      <path d="M80 148v60M120 148v60" class="sk"/>
-      <path d="M76 148h48" class="sk" stroke-width="1"/>
-      <!-- Shoes -->
-      <path d="M72 210c4 6 12 4 14 0M114 210c4 6 12 4 14 0" class="sk" stroke-width="2"/>
-    </svg>
+    <img src="portrait.jpg" alt="Xinyue Gao" class="hero-portrait-img">
   </div>
 
   <!-- Bottom action buttons -->
@@ -479,8 +468,8 @@ body::before {
   <div class="about-layout">
     <div class="about-intro reveal">
       <h3 data-zh="你好，我是高新月" data-en="Hello, I'm Xinyue Gao">你好，我是高新月</h3>
-      <p data-zh="我是一名<span class='highlight'>应用统计硕士</span>在读学生，目前就读于中央民族大学。本科毕业于安徽师范大学统计学专业，GPA 4.1/5.0，专业排名前5%。" data-en="I'm a <span class='highlight'>Master of Applied Statistics</span> student at Minzu University of China, with a BS in Statistics from Anhui Normal University (GPA 4.1/5.0, ranked top 5%).">我是一名<span class="highlight">应用统计硕士</span>在读学生，目前就读于中央民族大学。本科毕业于安徽师范大学统计学专业，GPA 4.1/5.0，专业排名前5%。</p>
-      <p data-zh="热衷于<span class='highlight'>数据驱动的决策优化</span>，在供应链数字化、ESG数据分析、跨国项目管理方面有丰富实习经验。擅长用 Python 和 SQL 构建自动化数据流程，提高业务效率。" data-en="Passionate about <span class='highlight'>data-driven decision optimization</span>. Experienced in supply chain digitalization, ESG data analysis, and cross-border project management. Skilled in Python and SQL automation.">热衷于<span class="highlight">数据驱动的决策优化</span>，在供应链数字化、ESG数据分析、跨国项目管理方面有丰富实习经验。擅长用 Python 和 SQL 构建自动化数据流程，提高业务效率。</p>
+      <p data-zh="我是一名<span class='highlight'>喜欢数据分析</span>的人，同时也喜欢做些有趣的事情。我不喜欢把自己框在一个固定的标签里——会写点代码，也懂点设计，偶尔折腾些让自己开心的小项目。" data-en="I'm someone who <span class='highlight'>loves data analysis</span> and enjoys doing interesting things. I don't like boxing myself into labels — I can code a bit, design a bit, and occasionally build little projects that make me happy.">我是一名<span class="highlight">喜欢数据分析</span>的人，同时也喜欢做些有趣的事情。我不喜欢把自己框在一个固定的标签里——会写点代码，也懂点设计，偶尔折腾些让自己开心的小项目。</p>
+      <p data-zh="热衷于把<span class='highlight'>复杂的事情变简单</span>，在供应链数字化、ESG数据分析、跨国项目方面有一些实战经验。相信好的工具能让工作变得优雅，好的人际连接能让生活变得丰富。" data-en="Passionate about <span class='highlight'>making complex things simple</span>. Some hands-on experience in supply chain digitalization, ESG data, and cross-border projects. I believe good tools make work elegant, and good connections make life rich.">热衷于把<span class="highlight">复杂的事情变简单</span>，在供应链数字化、ESG数据分析、跨国项目方面有一些实战经验。相信好的工具能让工作变得优雅，好的人际连接能让生活变得丰富。</p>
     </div>
     <div class="id-badge-wrapper reveal">
       <div class="id-badge">
@@ -611,16 +600,16 @@ body::before {
     <h2 class="section-title" data-zh="兴趣 & 生活" data-en="Interests & Life">兴趣 & 生活</h2>
     <div class="section-line"></div>
   </div>
-  <div class="photo-grid reveal">
-    <div class="photo-item"><div class="photo-placeholder">🏔️</div></div><div class="photo-item"><div class="photo-placeholder">🌊</div></div><div class="photo-item"><div class="photo-placeholder">🏙️</div></div><div class="photo-item"><div class="photo-placeholder">🌸</div></div><div class="photo-item"><div class="photo-placeholder">☕</div></div><div class="photo-item"><div class="photo-placeholder">📸</div></div>
+  <div class="photo-grid reveal" id="photoGrid">
+    <div class="photo-item" onclick="openGallery(0)"><div class="photo-placeholder">🏔️</div></div><div class="photo-item" onclick="openGallery(1)"><div class="photo-placeholder">🌊</div></div><div class="photo-item" onclick="openGallery(2)"><div class="photo-placeholder">🏙️</div></div><div class="photo-item" onclick="openGallery(3)"><div class="photo-placeholder">🌸</div></div><div class="photo-item" onclick="openGallery(4)"><div class="photo-placeholder">☕</div></div><div class="photo-item" onclick="openGallery(5)"><div class="photo-placeholder">📸</div></div>
   </div>
   <div class="social-playlist-row">
     <div class="social-links reveal">
       <h3 data-zh="找到我" data-en="Find Me">找到我</h3>
-      <a href="#" class="social-link"><span class="soc-icon">📺</span> YouTube <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@xinyuegao</span></a>
-      <a href="#" class="social-link"><span class="soc-icon">📕</span> 小红书 <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@新月</span></a>
-      <a href="#" class="social-link"><span class="soc-icon">🐙</span> GitHub <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@ceciliagao</span></a>
-      <a href="#" class="social-link"><span class="soc-icon">💼</span> LinkedIn <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">/in/xinyuegao</span></a>
+      <a href="https://www.youtube.com/@GaoXinyue-y8z" target="_blank" class="social-link"><span class="soc-icon">📺</span> YouTube <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@GaoXinyue-y8z</span></a>
+      <a href="https://www.xiaohongshu.com/user/profile/你的ID" target="_blank" class="social-link"><span class="soc-icon">📕</span> 小红书 <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@kaka秋</span></a>
+      <a href="https://www.instagram.com/bili_cecilia" target="_blank" class="social-link"><span class="soc-icon">📷</span> Instagram <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">@bili_cecilia</span></a>
+      <a href="https://www.linkedin.com/in/高新月" target="_blank" class="social-link"><span class="soc-icon">💼</span> LinkedIn <span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">高新月</span></a>
     </div>
     <div class="playlist-box reveal">
       <h3 data-zh="🎵 正在听" data-en="🎵 Now Playing">🎵 正在听</h3>
@@ -666,8 +655,58 @@ body::before {
   </div>
 </section>
 
+<!-- Gallery overlay -->
+<div class="gallery-overlay" id="galleryOverlay">
+  <div class="gallery-close" onclick="closeGallery()">✕</div>
+  <div class="gallery-main">
+    <button class="gallery-nav" onclick="galleryPrev()">◂</button>
+    <div class="gallery-image-wrap" id="galleryImageWrap"></div>
+    <button class="gallery-nav" onclick="galleryNext()">▸</button>
+  </div>
+  <div class="gallery-counter" id="galleryCounter"></div>
+  <div class="gallery-thumbs" id="galleryThumbs"></div>
+</div>
+
 <script>
 let currentLang='zh',currentTheme='casual';
+
+// ===== GALLERY =====
+const galleryIcons = ['🏔️','🌊','🏙️','🌸','☕','📸'];
+const galleryLabels = {zh:['山间','海边','城市','花开','咖啡','摄影'],en:['Mountain','Ocean','City','Blossom','Coffee','Photo']};
+let galleryIdx = 0;
+
+function openGallery(idx) {
+  galleryIdx = idx;
+  const overlay = document.getElementById('galleryOverlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderGallery();
+}
+function closeGallery() {
+  document.getElementById('galleryOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function galleryPrev() { galleryIdx = (galleryIdx - 1 + galleryIcons.length) % galleryIcons.length; renderGallery(); }
+function galleryNext() { galleryIdx = (galleryIdx + 1) % galleryIcons.length; renderGallery(); }
+function renderGallery() {
+  const icon = galleryIcons[galleryIdx];
+  const label = galleryLabels[currentLang][galleryIdx];
+  document.getElementById('galleryImageWrap').innerHTML = '<div class="gallery-placeholder" style="background:linear-gradient(135deg,#c5d8c3,#8faf8d)">'+icon+'</div>';
+  document.getElementById('galleryCounter').textContent = (galleryIdx+1)+' / '+galleryIcons.length+' · '+label;
+  // Render thumbnails
+  let thumbsHtml = '';
+  galleryIcons.forEach((ic,i) => {
+    thumbsHtml += '<div class="gallery-thumb'+(i===galleryIdx?' active':'')+'" onclick="galleryIdx='+i+';renderGallery()" style="background:linear-gradient(135deg,#c5d8c3,#8faf8d);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">'+ic+'</div>';
+  });
+  document.getElementById('galleryThumbs').innerHTML = thumbsHtml;
+}
+// Keyboard nav
+document.addEventListener('keydown',e => {
+  if(!document.getElementById('galleryOverlay').classList.contains('open')) return;
+  if(e.key === 'Escape') closeGallery();
+  if(e.key === 'ArrowLeft') galleryPrev();
+  if(e.key === 'ArrowRight') galleryNext();
+});
 const typewriterContent={zh:`写给下一个访客，
 
 你好呀，很高兴你来到这里。
