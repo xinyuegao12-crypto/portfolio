@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cecilia Gao — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+/* ========== VARIABLES ========== */
+:root {
+  --transition-speed: 0.5s;
+}
+body.theme-casual {
+  --bg: #f7f5f0;
+  --bg-card: rgba(255,255,255,0.65);
+  --bg-card-hover: rgba(255,255,255,0.9);
+  --text: #3d3226;
+  --text-muted: #8c7b6b;
+  --text-light: #b8a99a;
+  --accent: #d4956a;
+  --accent2: #8faf8b;
+  --accent3: #e8c97a;
+  --border: rgba(180,150,120,0.15);
+  --shadow: 0 4px 24px rgba(140,120,90,0.08);
+  --nav-bg: rgba(247,245,240,0.75);
+  --tag-bg: rgba(143,175,139,0.12);
+  --tag-text: #6b8b67;
+  --hero-gradient: linear-gradient(180deg, #f7f5f0 0%, #efe8db 100%);
+  --badge-ribbon: #d4956a;
+  --card-border: rgba(180,150,120,0.12);
+  --skill-bg: rgba(212,149,106,0.08);
+  --skill-hover: var(--accent);
+  --typewriter-bg: #faf8f4;
+  --divider: rgba(180,150,120,0.2);
+}
+body.theme-professional {
+  --bg: #f8f9fb;
+  --bg-card: rgba(255,255,255,0.8);
+  --bg-card-hover: rgba(255,255,255,0.95);
+  --text: #1a1d23;
+  --text-muted: #5a5f6b;
+  --text-light: #8b8f9b;
+  --accent: #2c5282;
+  --accent2: #4a7ab5;
+  --accent3: #c4a35a;
+  --border: rgba(0,0,0,0.08);
+  --shadow: 0 4px 24px rgba(0,0,0,0.06);
+  --nav-bg: rgba(248,249,251,0.85);
+  --tag-bg: rgba(44,82,130,0.08);
+  --tag-text: #2c5282;
+  --hero-gradient: linear-gradient(180deg, #f8f9fb 0%, #e8ecf1 100%);
+  --badge-ribbon: #2c5282;
+  --card-border: rgba(0,0,0,0.08);
+  --skill-bg: rgba(44,82,130,0.06);
+  --skill-hover: var(--accent);
+  --typewriter-bg: #f9fafb;
+  --divider: rgba(0,0,0,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition-speed), color var(--transition-speed);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ========== NAVIGATION ========== */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all var(--transition-speed);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-toggles { display: flex; gap: 10px; align-items: center; }
+.toggle-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+.toggle-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ========== SECTIONS ========== */
+.page-section {
+  min-height: 100vh;
+  padding: 100px 0 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  color: var(--text);
+  margin: 8px 0;
+}
+.section-line {
+  width: 50px; height: 3px;
+  background: var(--accent3);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* ========== HOME / HERO ========== */
+.home-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--hero-gradient);
+  transition: background var(--transition-speed);
+  padding: 80px 32px;
+}
+.portfolio-art {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.portfolio-letter {
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--text);
+  opacity: 0.04;
+  transition: color var(--transition-speed);
+  user-select: none;
+}
+.letter-P{ top: 8%; left: 8%; }
+.letter-O{ top: 5%; right: 12%; }
+.letter-R{ top: 18%; left: 4%; }
+.letter-T{ top: 12%; right: 6%; }
+.letter-F{ bottom: 15%; left: 6%; }
+.letter-O2{ bottom: 10%; right: 8%; }
+.letter-L{ bottom: 22%; left: 12%; }
+.letter-I{ bottom: 8%; right: 16%; }
+.letter-O3{ top: 40%; left: 2%; }
+
+.doodle-container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.doodle-person {
+  width: 180px;
+  height: 220px;
+  margin: 0 auto;
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text);
+  z-index: 1;
+  position: relative;
+  text-align: center;
+}
+.hero-name span {
+  color: var(--accent);
+  font-style: italic;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+  animation: bounceDown 2s ease-in-out infinite;
+}
+.scroll-hint span { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); }
+.scroll-arrow { width: 20px; height: 20px; border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted); transform: rotate(45deg); }
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* ========== ABOUT SECTION ========== */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.about-intro h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.about-intro p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.about-intro .highlight {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ID Badge */
+.id-badge-wrapper {
+  display: flex;
+  justify-content: center;
+  perspective: 800px;
+}
+.id-badge {
+  width: 260px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--card-border);
+  transform-origin: top center;
+  animation: badgeSwing 3s ease-in-out infinite;
+  transition: all var(--transition-speed);
+}
+@keyframes badgeSwing {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(2deg); }
+}
+.id-badge:hover { animation: none; transform: rotate(0deg) scale(1.02); }
+.badge-ribbon {
+  background: var(--badge-ribbon);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  transition: background var(--transition-speed);
+}
+.badge-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+}
+.badge-info { padding: 16px; }
+.badge-info .name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; }
+.badge-info .role { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+.badge-info .dept { font-size: 0.72rem; color: var(--text-light); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--divider); }
+
+/* ========== TIMELINE ========== */
+.timeline-section { margin-top: 80px; }
+.timeline-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: var(--divider);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+  padding-left: 24px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -35px; top: 8px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.timeline-item h4 { font-size: 1rem; margin: 4px 0; color: var(--text); }
+.timeline-item p { font-size: 0.85rem; color: var(--text-muted); }
+.timeline-item .org { font-size: 0.8rem; color: var(--text-light); }
+
+/* ========== PROJECTS ========== */
+.projects-grid { display: grid; gap: 20px; }
+.project-folder {
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  transition: all 0.4s;
+  box-shadow: var(--shadow);
+}
+.project-folder-header {
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+.project-folder-header:hover { background: rgba(0,0,0,0.02); }
+.project-folder-header .pf-left { display: flex; align-items: center; gap: 16px; }
+.pf-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.pf-icon--comp { background: #e8f0fe; color: #2c5282; }
+.pf-icon--hack { background: #fef3e2; color: #c4734e; }
+.pf-icon--oss { background: #e6f4ea; color: #2d6a4f; }
+.pf-icon--design { background: #f3e5f5; color: #7b1fa2; }
+.pf-title { font-weight: 600; font-size: 1rem; }
+.pf-subtitle { font-size: 0.8rem; color: var(--text-muted); }
+.pf-arrow {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+}
+.project-folder.open .pf-arrow { transform: rotate(180deg); }
+.project-folder-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+.project-folder.open .project-folder-body {
+  max-height: 600px;
+  padding: 0 28px 24px;
+}
+.project-folder-body img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.project-folder-body p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+.project-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.project-tag {
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+
+/* ========== SKILLS SCROLL ========== */
+.skills-marquee-wrap {
+  margin-top: 64px;
+  overflow: hidden;
+  padding: 20px 0;
+}
+.skills-marquee {
+  display: flex;
+  gap: 32px;
+  animation: marqueeScroll 25s linear infinite;
+  width: max-content;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--skill-bg);
+  border-radius: 50px;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  cursor: default;
+}
+.marquee-item:hover { background: var(--skill-hover); color: #fff; }
+.marquee-icon { font-size: 1.3rem; }
+
+/* ========== CERTIFICATES FLIP ========== */
+.certs-section { margin-top: 80px; }
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.cert-card {
+  perspective: 600px;
+  height: 140px;
+}
+.cert-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.cert-card:hover .cert-inner { transform: rotateY(180deg); }
+.cert-front, .cert-back {
+  position: absolute;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--card-border);
+}
+.cert-front {
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+.cert-front .cert-icon { font-size: 2rem; margin-bottom: 8px; }
+.cert-front .cert-name { font-size: 0.88rem; font-weight: 600; }
+.cert-front .cert-issuer { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+.cert-back {
+  background: var(--accent);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+.cert-back .cert-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; opacity: 0.9; }
+.cert-back .cert-detail { font-size: 0.78rem; margin-top: 6px; opacity: 0.85; }
+
+/* ========== OTHERS ========== */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.photo-item {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.4s;
+}
+.photo-item:hover { transform: scale(1.03); }
+.photo-item:nth-child(1) { background: linear-gradient(135deg, #f4d03f, #e67e22); }
+.photo-item:nth-child(2) { background: linear-gradient(135deg, #85c1e9, #2e86c1); }
+.photo-item:nth-child(3) { background: linear-gradient(135deg, #82e0aa, #27ae60); }
+.photo-item:nth-child(4) { background: linear-gradient(135deg, #f1948a, #c0392b); }
+.photo-item:nth-child(5) { background: linear-gradient(135deg, #d7bde2, #8e44ad); }
+.photo-item:nth-child(6) { background: linear-gradient(135deg, #aed6f1, #2471a3); }
+.photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.social-playlist-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 48px;
+}
+.social-links h3, .playlist-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s;
+}
+.social-link:hover { transform: translateX(8px); border-color: var(--accent); }
+.social-link .soc-icon { font-size: 1.4rem; }
+.playlist-box {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--card-border);
+}
+.playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.playlist-item:last-child { border-bottom: none; }
+.playlist-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  width: 24px;
+}
+.playlist-song { font-size: 0.9rem; }
+.playlist-artist { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ========== CONTACT / TYPEWRITER ========== */
+.typewriter-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--typewriter-bg);
+  transition: background var(--transition-speed);
+  padding: 40px;
+}
+.typewriter-box {
+  max-width: 700px;
+  width: 100%;
+}
+.typewriter-paper {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--card-border);
+  min-height: 300px;
+  position: relative;
+}
+.typewriter-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--text);
+}
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--accent);
+  animation: blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.typewriter-sign {
+  margin-top: 32px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.typewriter-sign.show { opacity: 1; }
+
+.contact-info-row {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.contact-chip {
+  padding: 12px 24px;
+  background: var(--bg-card);
+  border-radius: 50px;
+  border: 1px solid var(--card-border);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  display: flex; align-items: center; gap: 8px;
+}
+.contact-chip:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .about-layout, .social-playlist-row { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+  .nav-inner { padding: 0 16px; }
+  .page-section { padding-left: 20px; padding-right: 20px; }
+  .certs-grid { grid-template-columns: repeat(2, 1fr); }
+  .typewriter-paper { padding: 28px; }
+}
+</style>
+</head>
+<!-- ==============================================
+     Cecilia Gao — Portfolio
+     Bilingual (CN/EN) + Dual Theme (Casual/Professional)
+     ============================================== -->
+<body class="theme-casual">
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">CG.</div>
+    <div class="nav-links">
+      <a onclick="scrollToSection('home')" class="active" data-nav="home">Home</a>
+      <a onclick="scrollToSection('about')" data-nav="about">About</a>
+      <a onclick="scrollToSection('projects')" data-nav="projects">Projects</a>
+      <a onclick="scrollToSection('others')" data-nav="others">Others</a>
+      <a onclick="scrollToSection('contact')" data-nav="contact">Contact</a>
+    </div>
+    <div class="nav-toggles">
+      <button class="toggle-btn active" id="langZh" onclick="switchLang('zh')">中文</button>
+      <button class="toggle-btn" id="langEn" onclick="switchLang('en')">EN</button>
+      <button class="toggle-btn" id="themeCasual" onclick="switchTheme('casual')">🎨 清新</button>
+      <button class="toggle-btn" id="themePro" onclick="switchTheme('professional')">💼 职业</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HOME / HERO ===== -->
+<section class="home-section" id="home">
+
+  <!-- Background PORTFOLIO letters -->
+  <div class="portfolio-art">
+    <span class="portfolio-letter letter-P">P</span>
+    <span class="portfolio-letter letter-O">O</span>
+    <span class="portfolio-letter letter-R">R</span>
+    <span class="portfolio-letter letter-T">T</span>
+    <span class="portfolio-letter letter-F">F</span>
+    <span class="portfolio-letter letter-O2">O</span>
+    <span class="portfolio-letter letter-L">L</span>
+    <span class="portfolio-letter letter-I">I</span>
+    <span class="portfolio-letter letter-O3">O</span>
+  </div>
+
+  <div class="doodle-container">
+    <!-- Simple line drawing SVG of a person -->
+    <svg class="doodle-person" viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .doodle-line { stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; transition: stroke var(--transition-speed); }
+        .doodle-fill { fill: var(--accent); opacity: 0.08; transition: fill var(--transition-speed); }
+      </style>
+      <!-- Head -->
+      <circle cx="90" cy="38" r="22" class="doodle-line"/>
+      <!-- Hair -->
+      <path d="M68 30c0-20 44-20 44 0c0 16-8 28-8 34" class="doodle-line"/>
+      <path d="M73 20c6-8 28-8 34 0" class="doodle-line"/>
+      <path d="M71 28c8-10 30-10 38 0" class="doodle-line"/>
+      <!-- Eyes -->
+      <circle cx="82" cy="36" r="3" fill="currentColor" opacity="0.6"/>
+      <circle cx="98" cy="36" r="3" fill="currentColor" opacity="0.6"/>
+      <!-- Smile -->
+      <path d="M84 44c6 4 16 4 22 0" class="doodle-line" stroke-width="1.5"/>
+      <!-- Body / Dress -->
+      <path d="M90 60v45M65 65c10-8 40-8 50 0l-25 40-25-40z" class="doodle-line"/>
+      <!-- Arms -->
+      <path d="M65 75c-20 10-30 30-32 45" class="doodle-line"/>
+      <path d="M115 75c20 10 30 30 32 45" class="doodle-line"/>
+      <!-- Legs -->
+      <path d="M75 105v50M105 105v50" class="doodle-line"/>
+      <!-- Shoes -->
+      <path d="M70 155h15M95 155h15" class="doodle-line" stroke-width="2.5"/>
+      <!-- Little heart -->
+      <path d="M125 25c0-4 4-7 7-4 3-3 7 0 7 4-2 5-7 10-7 10s-5-5-7-10z" class="doodle-fill" stroke="var(--accent)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-name">I'm <span>Cecilia Gao</span></h1>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="page-section" id="about">
+  <div class="section-header reveal">
+    <div class="section-num">01</div>
+    <h2 class="section-title" data-zh="关于我" data-en="About Me">关于我</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-layout">
+    <!-- Left: Self-intro -->
+    <div class="about-intro reveal">
+      <h3 data-zh="你好，很高兴认识你" data-en="Hello, nice to meet you">你好，很高兴认识你</h3>
+      <p data-zh="我是<span class='highlight'>Cecilia Gao</span>，一名计算机科学专业的学生，热衷于用代码解决真实世界的问题。我相信技术的力量在于让生活变得更美好，而不仅仅是屏幕上的像素。" data-en="I'm <span class='highlight'>Cecilia Gao</span>, a CS student passionate about solving real-world problems with code. I believe technology's power lies in making life better, not just pixels on a screen.">我是<span class="highlight">Cecilia Gao</span>，一名计算机科学专业的学生，热衷于用代码解决真实世界的问题。我相信技术的力量在于让生活变得更美好，而不仅仅是屏幕上的像素。</p>
+      <p data-zh="目前专注于<span class='highlight'>前端开发与交互设计</span>，同时也在探索后端和AI领域。喜欢把创意变成可交互的作品。" data-en="Currently focused on <span class='highlight'>frontend development & interaction design</span>, while exploring backend and AI. I love turning creative ideas into interactive work.">目前专注于<span class="highlight">前端开发与交互设计</span>，同时也在探索后端和AI领域。喜欢把创意变成可交互的作品。</p>
+    </div>
+
+    <!-- Right: ID Badge -->
+    <div class="id-badge-wrapper reveal">
+      <div class="id-badge">
+        <div class="badge-ribbon" data-zh="学生证" data-en="STUDENT ID">学生证</div>
+        <div class="badge-photo">
+          <!-- Photo placeholder - replace with real photo -->
+          <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+            <circle cx="40" cy="32" r="20" fill="rgba(255,255,255,0.3)"/>
+            <path d="M15 85c0-18 12-32 25-32s25 14 25 32" fill="rgba(255,255,255,0.2)"/>
+          </svg>
+        </div>
+        <div class="badge-info">
+          <div class="name">Cecilia Gao</div>
+          <div class="role" data-zh="计算机科学 · 本科" data-en="Computer Science · Undergraduate">计算机科学 · 本科</div>
+          <div class="dept" data-zh="软件工程方向" data-en="Software Engineering Track">软件工程方向</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Timeline -->
+  <div class="timeline-section reveal">
+    <h3 class="timeline-title" data-zh="经历" data-en="Experience">经历</h3>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date" data-zh="2025.06 - 2025.09" data-en="Jun - Sep 2025">2025.06 - 2025.09</div>
+        <h4 data-zh="前端开发实习生" data-en="Frontend Developer Intern">前端开发实习生</h4>
+        <div class="org" data-zh="某科技公司 · 上海" data-en="Tech Company · Shanghai">某科技公司 · 上海</div>
+        <p data-zh="参与公司核心产品的前端架构优化，使用 React + TypeScript 重构了用户 dashboard，页面加载速度提升40%。" data-en="Optimized frontend architecture of core product. Refactored user dashboard with React + TypeScript, improving page load by 40%.">参与公司核心产品的前端架构优化，使用 React + TypeScript 重构了用户 dashboard，页面加载速度提升40%。</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date" data-zh="2024.07 - 2024.12" data-en="Jul - Dec 2024">2024.07 - 2024.12</div>
+        <h4 data-zh="UI/UX 设计实习生" data-en="UI/UX Design Intern">UI/UX 设计实习生</h4>
+        <div class="org" data-zh="某设计工作室 · 远程" data-en="Design Studio · Remote">某设计工作室 · 远程</div>
+        <p data-zh="负责多个客户项目的界面设计与原型制作，建立了组件库，提高了团队设计效率。" data-en="Designed interfaces and prototypes for multiple client projects. Built a component library that improved team design efficiency.">负责多个客户项目的界面设计与原型制作，建立了组件库，提高了团队设计效率。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="timeline-section reveal" style="margin-top: 40px;">
+    <h3 class="timeline-title" data-zh="教育" data-en="Education">教育</h3>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date" data-zh="2023 - 2027" data-en="2023 - 2027">2023 - 2027</div>
+        <h4 data-zh="计算机科学与技术 · 本科" data-en="BS in Computer Science">计算机科学与技术 · 本科</h4>
+        <div class="org" data-zh="某大学 · 软件学院" data-en="University · School of Software">某大学 · 软件学院</div>
+        <p data-zh="GPA 3.8/4.0，获得校级奖学金，加入学院创新实验室。" data-en="GPA 3.8/4.0. Dean's List recipient. Member of the Innovation Lab.">GPA 3.8/4.0，获得校级奖学金，加入学院创新实验室。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="page-section" id="projects">
+  <div class="section-header reveal">
+    <div class="section-num">02</div>
+    <h2 class="section-title" data-zh="项目 & 技能" data-en="Projects & Skills">项目 & 技能</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Foldable Project Cards -->
+  <div class="projects-grid">
+
+    <div class="project-folder reveal">
+      <div class="project-folder-header" onclick="toggleFolder(this)">
+        <div class="pf-left">
+          <div class="pf-icon pf-icon--hack">🏆</div>
+          <div>
+            <div class="pf-title" data-zh="全国大学生创新创业大赛 · 金奖" data-en="National Innovation & Entrepreneurship Competition · Gold Award">全国大学生创新创业大赛 · 金奖</div>
+            <div class="pf-subtitle" data-zh="2025 · 团队负责人" data-en="2025 · Team Lead">2025 · 团队负责人</div>
+          </div>
+        </div>
+        <span class="pf-arrow">▼</span>
+      </div>
+      <div class="project-folder-body">
+        <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#fef3e2,#fadbd8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:3rem;">🏆</div>
+        <p data-zh="设计并开发了一款面向老年人的智能健康管理平台，整合可穿戴设备数据与AI辅助诊断。负责全栈开发与UI设计，项目获得评委一致好评。" data-en="Designed and developed an intelligent health management platform for the elderly, integrating wearable device data with AI-assisted diagnosis. Responsible for full-stack development and UI design.">设计并开发了一款面向老年人的智能健康管理平台，整合可穿戴设备数据与AI辅助诊断。负责全栈开发与UI设计，项目获得评委一致好评。</p>
+        <div class="project-tags">
+          <span class="project-tag">React</span><span class="project-tag">Node.js</span><span class="project-tag">TensorFlow.js</span><span class="project-tag">Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-folder reveal">
+      <div class="project-folder-header" onclick="toggleFolder(this)">
+        <div class="pf-left">
+          <div class="pf-icon pf-icon--comp">💻</div>
+          <div>
+            <div class="pf-title" data-zh="校园二手交易小程序" data-en="Campus Second-Hand Trading Mini-App">校园二手交易小程序</div>
+            <div class="pf-subtitle" data-zh="2024 · 独立开发" data-en="2024 · Solo Developer">2024 · 独立开发</div>
+          </div>
+        </div>
+        <span class="pf-arrow">▼</span>
+      </div>
+      <div class="project-folder-body">
+        <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#e8f0fe,#d2e3fc);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:3rem;">💻</div>
+        <p data-zh="为校园社区打造的二手交易平台，支持商品发布、实时聊天、信用评分系统。上线后累计用户2000+，月活跃用户500+。" data-en="A second-hand trading platform for campus communities with listing, real-time chat, and credit scoring. 2000+ registered users, 500+ MAU.">为校园社区打造的二手交易平台，支持商品发布、实时聊天、信用评分系统。上线后累计用户2000+，月活跃用户500+。</p>
+        <div class="project-tags">
+          <span class="project-tag">Vue.js</span><span class="project-tag">Express</span><span class="project-tag">MongoDB</span><span class="project-tag">WebSocket</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-folder reveal">
+      <div class="project-folder-header" onclick="toggleFolder(this)">
+        <div class="pf-left">
+          <div class="pf-icon pf-icon--oss">🌟</div>
+          <div>
+            <div class="pf-title" data-zh="开源贡献 · UI 组件库" data-en="Open Source · UI Component Library">开源贡献 · UI 组件库</div>
+            <div class="pf-subtitle" data-zh="2024 · 核心贡献者" data-en="2024 · Core Contributor">2024 · 核心贡献者</div>
+          </div>
+        </div>
+        <span class="pf-arrow">▼</span>
+      </div>
+      <div class="project-folder-body">
+        <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#e6f4ea,#b7e4c7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:3rem;">🌟</div>
+        <p data-zh="参与维护一个拥有 5k+ Star 的开源 Vue 组件库，贡献了 15+ 组件与文档页面。主要贡献包括日期选择器、文件上传组件及无障碍优化的改进。" data-en="Maintainer of an open-source Vue component library with 5k+ GitHub stars. Contributed 15+ components and documentation pages including date picker, file upload, and accessibility improvements.">参与维护一个拥有 5k+ Star 的开源 Vue 组件库，贡献了 15+ 组件与文档页面。主要贡献包括日期选择器、文件上传组件及无障碍优化的改进。</p>
+        <div class="project-tags">
+          <span class="project-tag">Vue 3</span><span class="project-tag">TypeScript</span><span class="project-tag">Vitest</span><span class="project-tag">Storybook</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SKILLS MARQUEE ===== -->
+  <div class="skills-marquee-wrap reveal">
+    <div class="skills-marquee" id="skillsMarquee">
+      <span class="marquee-item"><span class="marquee-icon">⚛️</span> React</span>
+      <span class="marquee-item"><span class="marquee-icon">🟦</span> TypeScript</span>
+      <span class="marquee-item"><span class="marquee-icon">💚</span> Vue.js</span>
+      <span class="marquee-item"><span class="marquee-icon">🎨</span> Figma</span>
+      <span class="marquee-item"><span class="marquee-icon">🟩</span> Node.js</span>
+      <span class="marquee-item"><span class="marquee-icon">🐍</span> Python</span>
+      <span class="marquee-item"><span class="marquee-icon">🎯</span> GSAP</span>
+      <span class="marquee-item"><span class="marquee-icon">🗄️</span> MongoDB</span>
+      <span class="marquee-item"><span class="marquee-icon">🔷</span> Docker</span>
+      <span class="marquee-item"><span class="marquee-icon">🐙</span> Git</span>
+      <span class="marquee-item"><span class="marquee-icon">🖌️</span> Tailwind</span>
+      <span class="marquee-item"><span class="marquee-icon">⚡</span> Vite</span>
+      <!-- Duplicate for seamless scroll -->
+      <span class="marquee-item"><span class="marquee-icon">⚛️</span> React</span>
+      <span class="marquee-item"><span class="marquee-icon">🟦</span> TypeScript</span>
+      <span class="marquee-item"><span class="marquee-icon">💚</span> Vue.js</span>
+      <span class="marquee-item"><span class="marquee-icon">🎨</span> Figma</span>
+      <span class="marquee-item"><span class="marquee-icon">🟩</span> Node.js</span>
+      <span class="marquee-item"><span class="marquee-icon">🐍</span> Python</span>
+    </div>
+  </div>
+
+  <!-- ===== CERTIFICATES ===== -->
+  <div class="certs-section reveal">
+    <h3 class="timeline-title" data-zh="证书" data-en="Certificates">证书</h3>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-inner">
+          <div class="cert-front">
+            <div class="cert-icon">📜</div>
+            <div class="cert-name">AWS Cloud Practitioner</div>
+            <div class="cert-issuer">Amazon Web Services</div>
+          </div>
+          <div class="cert-back">
+            <div class="cert-date">2025.03</div>
+            <div class="cert-detail">Certified Cloud Practitioner · 通过 AWS 官方考试认证</div>
+          </div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-inner">
+          <div class="cert-front">
+            <div class="cert-icon">🏅</div>
+            <div class="cert-name">CET-6</div>
+            <div class="cert-issuer">全国大学英语六级</div>
+          </div>
+          <div class="cert-back">
+            <div class="cert-date">2024.12</div>
+            <div class="cert-detail">CET-6 · 英语六级 580分</div>
+          </div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-inner">
+          <div class="cert-front">
+            <div class="cert-icon">🧑‍💻</div>
+            <div class="cert-name">LeetCode</div>
+            <div class="cert-issuer">算法与数据结构</div>
+          </div>
+          <div class="cert-back">
+            <div class="cert-date" data-zh="持续刷题中" data-en="Ongoing">持续刷题中</div>
+            <div class="cert-detail">Solved 300+ problems · Rating 1800+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OTHERS ===== -->
+<section class="page-section" id="others">
+  <div class="section-header reveal">
+    <div class="section-num">03</div>
+    <h2 class="section-title" data-zh="兴趣 & 生活" data-en="Interests & Life">兴趣 & 生活</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Photo Grid -->
+  <div class="photo-grid reveal">
+    <div class="photo-item"><div class="photo-placeholder">🏔️</div></div>
+    <div class="photo-item"><div class="photo-placeholder">🌊</div></div>
+    <div class="photo-item"><div class="photo-placeholder">🏙️</div></div>
+    <div class="photo-item"><div class="photo-placeholder">🌸</div></div>
+    <div class="photo-item"><div class="photo-placeholder">☕</div></div>
+    <div class="photo-item"><div class="photo-placeholder">📸</div></div>
+  </div>
+
+  <!-- Social + Playlist -->
+  <div class="social-playlist-row">
+    <div class="social-links reveal">
+      <h3 data-zh="找到我" data-en="Find Me">找到我</h3>
+      <a href="#" class="social-link"><span class="soc-icon">📺</span> YouTube <span style="font-size:0.75rem;color:var(--text-muted);margin-left:auto;">@ceciliagao</span></a>
+      <a href="#" class="social-link"><span class="soc-icon">📕</span> 小红书 <span style="font-size:0.75rem;color:var(--text-muted);margin-left:auto;">@CeciliaGao</span></a>
+      <a href="#" class="social-link"><span class="soc-icon">🐙</span> GitHub <span style="font-size:0.75rem;color:var(--text-muted);margin-left:auto;">@ceciliagao</span></a>
+      <a href="#" class="social-link"><span class="soc-icon">💼</span> LinkedIn <span style="font-size:0.75rem;color:var(--text-muted);margin-left:auto;">/in/ceciliagao</span></a>
+    </div>
+
+    <div class="playlist-box reveal">
+      <h3 data-zh="正在听" data-en="Now Playing">🎵 正在听</h3>
+      <div class="playlist-item"><span class="playlist-num">01</span><span class="playlist-song">Stay With Me</span><span class="playlist-artist"> — CHROMANCE</span></div>
+      <div class="playlist-item"><span class="playlist-num">02</span><span class="playlist-song">起风了</span><span class="playlist-artist"> — 买辣椒也用券</span></div>
+      <div class="playlist-item"><span class="playlist-num">03</span><span class="playlist-song">Viva La Vida</span><span class="playlist-artist"> — Coldplay</span></div>
+      <div class="playlist-item"><span class="playlist-num">04</span><span class="playlist-song">晴天</span><span class="playlist-artist"> — 周杰伦</span></div>
+      <div class="playlist-item"><span class="playlist-num">05</span><span class="playlist-song">Clair de Lune</span><span class="playlist-artist"> — Debussy</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / TYPEWRITER ===== -->
+<section class="typewriter-section" id="contact">
+  <div class="typewriter-box">
+    <div class="typewriter-paper reveal">
+      <div class="typewriter-text" id="typewriterContent"></div>
+      <div class="typewriter-sign" id="typewriterSign" data-zh="— Cecilia Gao" data-en="— Cecilia Gao">— Cecilia Gao</div>
+    </div>
+    <div class="contact-info-row reveal">
+      <a href="mailto:ceciliagao@example.com" class="contact-chip">✉️ ceciliagao@example.com</a>
+      <a href="#" class="contact-chip">🐙 GitHub</a>
+      <a href="#" class="contact-chip">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// ===== GLOBAL STATE =====
+let currentLang = 'zh';
+let currentTheme = 'casual';
+const typewriterContent = {
+  zh: `写给下一个访客，
+
+你好呀，很高兴你来到这里。
+
+我是 Cecilia，一个热爱设计与代码的 CS 学生。
+这个网站是我亲手搭建的，记录了我的学习、创作和生活。
+
+每一行代码都是我敲下的，每一张照片都是我拍下的。
+如果你正在读这些文字，说明我们在某个维度上产生了连接。
+
+希望你今天过得开心。如果你也喜欢创造点什么，
+不妨给我发一封邮件，或者在任何平台找到我。
+
+很高兴认识你。`,
+  en: `To the next visitor,
+
+Hello! Glad you made it here.
+
+I'm Cecilia, a CS student who loves design and code.
+I built this site by hand — a little corner to document my learning, projects, and life.
+
+Every line of code here, I wrote myself. Every photo, I took.
+If you're reading this, we've already connected in some way.
+
+Hope you're having a great day. If you enjoy creating things too,
+feel free to send me an email or find me on any platform.
+
+Nice to meet you.`
+};
+
+// ===== TYPEWRITER EFFECT =====
+function typeWriter(text, element, signEl, speed = 50) {
+  let i = 0;
+  element.textContent = '';
+  signEl.classList.remove('show');
+  function type() {
+    if (i < text.length) {
+      element.innerHTML = text.substring(0, i + 1).replace(/\n/g, '<br>') + '<span class="typewriter-cursor"></span>';
+      i++;
+      setTimeout(type, speed);
+    } else {
+      element.innerHTML = text.replace(/\n/g, '<br>');
+      signEl.classList.add('show');
+    }
+  }
+  type();
+}
+
+function restartTypewriter() {
+  const el = document.getElementById('typewriterContent');
+  const signEl = document.getElementById('typewriterSign');
+  typeWriter(typewriterContent[currentLang], el, signEl, 45);
+}
+
+// ===== LANGUAGE SWITCH =====
+function switchLang(lang) {
+  currentLang = lang;
+  document.getElementById('langZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('langEn').classList.toggle('active', lang === 'en');
+
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    const text = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+    if (text) {
+      // Only update direct text nodes or spans (not complex children)
+      if (el.children.length === 1 && el.children[0].tagName === 'SPAN') {
+        // Handle elements with nested span.highlight
+        const span = el.querySelector('span.highlight');
+        if (span) {
+          el.innerHTML = text;  // Re-parse the HTML from data attrs
+        } else {
+          el.textContent = text;
+        }
+      } else if (el.children.length === 0) {
+        el.textContent = text;
+      }
+    }
+  });
+
+  restartTypewriter();
+}
+
+// ===== THEME SWITCH =====
+function switchTheme(theme) {
+  currentTheme = theme;
+  document.body.className = 'theme-' + theme;
+  document.getElementById('themeCasual').classList.toggle('active', theme === 'casual');
+  document.getElementById('themePro').classList.toggle('active', theme === 'professional');
+}
+
+// ===== FOLDER TOGGLE =====
+function toggleFolder(header) {
+  const folder = header.parentElement;
+  folder.classList.toggle('open');
+}
+
+// ===== SCROLL TO SECTION =====
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// ===== NAV ACTIVE STATE =====
+const sections = ['home', 'about', 'projects', 'others', 'contact'];
+const navLinks = document.querySelectorAll('[data-nav]');
+function updateActiveNav() {
+  const scrollY = window.scrollY + 100;
+  let active = 'home';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && scrollY >= el.offsetTop) {
+      active = id;
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('data-nav') === active);
+  });
+}
+
+// ===== SCROLL REVEAL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===== SCROLL EVENT =====
+window.addEventListener('scroll', updateActiveNav);
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  // Open first project by default
+  const firstFolder = document.querySelector('.project-folder');
+  if (firstFolder) firstFolder.classList.add('open');
+
+  // Start typewriter
+  restartTypewriter();
+
+  // Initial nav state
+  updateActiveNav();
+});
+</script>
+</body>
+</html>
