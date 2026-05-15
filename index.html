@@ -144,11 +144,10 @@ body::before {
 .hero-portrait-img {
   width: clamp(160px, 28vw, 260px);
   height: auto;
-  max-height: clamp(300px, 45vw, 420px);
+  max-height: clamp(320px, 48vw, 440px);
   object-fit: contain;
   animation: gentleFloat 4s ease-in-out infinite;
-  opacity: 0.85;
-  filter: contrast(1.3);
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.06));
 }
 @keyframes gentleFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
@@ -410,7 +409,7 @@ body::before {
 
   <!-- Center portrait — photo with sketch filter -->
   <div class="hero-portrait-wrap">
-    <img src="portrait-sketch.png" alt="Xinyue Gao" class="hero-portrait-img">
+    <img src="portrait-cutout.png" alt="Xinyue Gao" class="hero-portrait-img">
   </div>
 
   <!-- Bottom action buttons -->
